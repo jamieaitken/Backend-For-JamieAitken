@@ -29,6 +29,7 @@ class GiphyController
             'reason' => '',
             'statusCode' => ''
         ];
+        
 
         $request = new Curl($this->baseEndpoint);
         $request->get('/v1/gifs/random', [

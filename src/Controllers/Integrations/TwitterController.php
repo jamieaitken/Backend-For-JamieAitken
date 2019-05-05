@@ -47,18 +47,6 @@ class TwitterController
 
     private function getDetails()
     {
-
-        $cache = new CacheHandler();
-
-        $fetch = $cache->fetch('twitter');
-
-        if (!is_bool($fetch)) {
-            return [
-                'statusCode' => 200,
-                'reason' => $fetch
-            ];
-        }
-
         $responseStructure = [
             'reason' => '',
             'statusCode' => ''
@@ -96,7 +84,6 @@ class TwitterController
                 $nicifyStrucuture['user'][$key] = $value;
             }
         }
-        $cache->save('twitter', $nicifyStrucuture);
 
         $responseStructure['statusCode'] = 200;
         $responseStructure['reason'] = $nicifyStrucuture;

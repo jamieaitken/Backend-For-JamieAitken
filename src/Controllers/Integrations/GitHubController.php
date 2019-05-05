@@ -28,17 +28,6 @@ class GitHubController
     private function getRepos()
     {
 
-        $cache = new CacheHandler();
-
-        $fetch = $cache->fetch('github');
-
-        if (!is_bool($fetch)) {
-            return [
-                'statusCode' => 200,
-                'reason' => $fetch
-            ];
-        }
-
         $responseStructure = [
             'reason' => '',
             'statusCode' => ''
@@ -71,8 +60,6 @@ class GitHubController
                 $nicifyResults[$key][$k] = $v;
             }
         }
-
-        $cache->save('github', $nicifyResults);
 
         $responseStructure['statusCode'] = 200;
         $responseStructure['reason'] = $nicifyResults;
